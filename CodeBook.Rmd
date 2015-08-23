@@ -1,7 +1,4 @@
----
-title: "Code_Book_Cleaning_Data_Project"
-output: html_document
----
+
 This file describes the variables, the data, and transformations performed to clean up the data. It is assumed that the data are unzipped as text files in the current working directory.
 
 The data for the project:
@@ -23,11 +20,12 @@ means_data contains the mean values for different measurements from final_data c
 ddply() from the plyr package is used to calculate means of the columns and based on the subject and activity subset
 
 
+
 The analysis.R script performs the following:
 
 Step 1. The data is merged using the rbind() function. This is done according to the dataset decription from the README.txt file accompaning the dataset. Files with the same dimentions and also names (differing by test/train description) are assumed to refer to the relevant datasets which can be merged. 
-Step 2. Columns with the mean and standard deviation measures are selected from the merged dataset. 
 
+Step 2. Columns with the mean and standard deviation measures are selected from the merged dataset. 
 First a vector is created from the features file, with columns numbers, of those columns, which contain std or mean.
 This vector is used to subset the merged data (all_data).
 This vector is then used to extract the features names from the features files and then correct the column names in the merged data (all_data file).
