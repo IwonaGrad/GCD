@@ -1,0 +1,39 @@
+---
+title: "Code_Book_Cleaning_Data_Project"
+output: html_document
+---
+This file describes the variables, the data, and transformations performed to clean up the data. It is assumed that the data are unzipped as text files in the current working directory.
+
+The data for the project:
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+Variables:
+Original files, unzipped, downloaded files: x_train, y_train, x_test, y_test, subject_train and subject_test.
+
+Merged datasets: all_data, all_labels and all_subjects are merged initial respective datasets of each test and train sets.
+
+Activities contains variable name assigned to a number (1:6) from original provided activity_labels.txt file.
+Features contains the correct names for the all_data dataset measurements. 
+
+MeanStdfeatures, is a numeric vector extracted from features, with numbers of rows which name contains mean or std. It is used to subset the merged data.  
+
+final_data is a merged dataset of all_data, all_labels and all_subjects merged together
+means_data contains the mean values for different measurements from final_data columns, sorted based on subject and activity
+
+ddply() from the plyr package is used to calculate means of the columns and based on the subject and activity subset
+
+
+The analysis.R script performs the following:
+
+Step 1. The data is merged using the rbind() function. This is done according to the dataset decription from the README.txt file accompaning the dataset. Files with the same dimentions and also names (differing by test/train description) are assumed to refer to the relevant datasets which can be merged. 
+Step 2. Columns with the mean and standard deviation measures are selected from the merged dataset. 
+
+First a vector is created from the features file, with columns numbers, of those columns, which contain std or mean.
+This vector is used to subset the merged data (all_data).
+This vector is then used to extract the features names from the features files and then correct the column names in the merged data (all_data file).
+
+Step 3. Activity data has assigned values 1:6, the activity names and corresponding IDs are taken from activity_labels.txt (activities) and substituted in the merged labels.
+
+Step 4. On the merged dataset, the column name for subject is corrected and the measurements data is merged with subjects and activity. The first 66 columns contain activity measurements that range from -1 to 1, the "subjects" column contains integers that range from 1 to 30 inclusive; the "activity" column contains 6 kinds of activity names.
+
+Step 5. Generation of a new dataset (mean.txt) with all the average measures for each measurement mean and std based on subject and activity type. There are 30 unique subjects and 6 unique activities, which result in a 180 combinations of the two. For each combination, we calculate the mean of each measurement with the corresponding combination and we get a 180x68 data frame.
