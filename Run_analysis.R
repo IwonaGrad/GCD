@@ -24,7 +24,6 @@ all_subjects <- rbind(subject_train, subject_test)
 features <- read.table("features.txt")
 
 # get only columns with have mean() or std() in their names
-#MeanStdfeatures <- grep("-(mean|std)\\(\\)", features[, 2])
 MeanStdfeatures <- grep("(mean|std)", features[, 2])
 
 # subset the desired columns
