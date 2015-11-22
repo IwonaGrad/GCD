@@ -1,5 +1,5 @@
 
-This file describes the variables, the data, and transformations performed to clean up the data. It is assumed that the data are unzipped as text files in the current working directory.
+This file describes the variables, the data, and transformations performed to clean up the data. The data needs to be unzipped as text files in the current working directory.
 
 The data for the project:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
