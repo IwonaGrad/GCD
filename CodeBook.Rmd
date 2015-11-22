@@ -9,12 +9,12 @@ Original files, unzipped, downloaded files: x_train, y_train, x_test, y_test, su
 
 Merged datasets: all_data, all_labels and all_subjects are merged initial respective datasets of each test and train sets.
 
-Activities contains variable name assigned to a number (1:6) from original provided activity_labels.txt file.
-Features contains the correct names for the all_data dataset measurements. 
+Activities: contains variable name assigned to a number (1:6) from original provided activity_labels.txt file.
+Features: contains the correct names for the all_data dataset measurements. 
 
-MeanStdfeatures, is a numeric vector extracted from features, with numbers of rows which name contains mean or std. It is used to subset the merged data.  
+MeanStdfeatures: is a numeric vector extracted from features, with numbers of rows which name contains mean or std. It is used to subset the merged data.  
 
-final_data is a merged dataset of all_data, all_labels and all_subjects merged together
+final_data: is a merged dataset of all_data, all_labels and all_subjects merged together
 means_data contains the mean values for different measurements from final_data columns, sorted based on subject and activity
 
 ddply() from the plyr package is used to calculate means of the columns and based on the subject and activity subset
