@@ -4,10 +4,12 @@ This file describes the variables, the data, and transformations performed to cl
 The data for the project:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
+ddply() from the plyr package is used to calculate means of the columns and based on the subject and activity subset, library needs to be loaded
+
 Variables:
 Original files, unzipped, downloaded files: x_train, y_train, x_test, y_test, subject_train and subject_test.
 
-Merged datasets: all_data, all_labels and all_subjects are merged initial respective datasets of each test and train sets.
+Merged datasets: all_data, all_labels and all_subjects are merged files of initial respective datasets (x to data, y to labels, subject to subjects) of each test and train sets.
 
 Activities: contains variable name assigned to a number (1:6) from original provided activity_labels.txt file.
 Features: contains the correct names for the all_data dataset measurements. 
@@ -15,7 +17,7 @@ Features: contains the correct names for the all_data dataset measurements.
 MeanStdfeatures: is a numeric vector extracted from features, with numbers of rows which name contains mean or std. It is used to subset the merged data.  
 
 final_data: is a merged dataset of all_data, all_labels and all_subjects merged together
-means_data contains the mean values for different measurements from final_data columns, sorted based on subject and activity
+mean_data contains the mean values for different measurements from final_data columns, sorted based on subject and activity
 
-ddply() from the plyr package is used to calculate means of the columns and based on the subject and activity subset
+
 
