@@ -1,9 +1,7 @@
 # Step 1. Merge the training and the test sets to create one data set.
 
-# load the plyr package
 library(plyr)
 
-# load the data
 x_train <- read.table("./X_train.txt")
 y_train <- read.table("./y_train.txt")
 subject_train <- read.table("./subject_train.txt")
@@ -26,10 +24,12 @@ all_subjects <- rbind(subject_train, subject_test)
 features <- read.table("features.txt")
 
 # get only columns with have mean() or std() in their names
+#MeanStdfeatures <- grep("-(mean|std)\\(\\)", features[, 2])
 MeanStdfeatures <- grep("(mean|std)", features[, 2])
 
-# subset the desired columns using the created vector
+# subset the desired columns
 all_data <- all_data[, MeanStdfeatures]
+
 
 # change the column names
 names(all_data) <- features[MeanStdfeatures, 2]
@@ -56,8 +56,8 @@ final_data <- cbind(all_data, all_labels, all_subjects)
 # Step 5.Create a second, independent tidy data set with the average of each variable
 # for each activity and each subject
 
-# this is done from the merged dataset, taking 66 columns because the last two are activity & subject
-mean_data <- ddply(final_data, .(subject, activity), function(x) colMeans(x[, 1:66]))
+# this is done from the merged dataset, taking 79 columns because the last two are activity & subject
+mean_data <- ddply(final_data, .(subject, activity), function(x) colMeans(x[, 1:79]))
 
 #exporting the dataset as a txt file
 exported_data <- write.table(mean_data, "exported_data.txt", sep="\t", row.names = FALSE)
