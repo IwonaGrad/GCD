@@ -57,4 +57,5 @@ final_data <- cbind(all_data, all_labels, all_subjects)
 # this is done from the merged dataset, taking 66 columns because the last two are activity & subject
 mean_data <- ddply(final_data, .(subject, activity), function(x) colMeans(x[, 1:66]))
 
+write.table(mean_data)
 head(mean_data)
