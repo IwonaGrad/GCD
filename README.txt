@@ -25,17 +25,17 @@ First a vector is created from the features file, with rows numbers, of those ro
 This vector is used to subset the merged data (all_data).
 This vector is then used to extract the features names from the features files and then to correct the column names in the merged data (all_data file).
 
-Step 3. Activity data has assigned values 1:6, the activity names and corresponding IDs are taken from activity_labels.txt (activities) and substituted in the merged labels.
+Step 3. Activity data has assigned values 1:6, the activity names and corresponding IDs are taken from activity_labels.txt (activities) and substituted in the merged labels (all_labels).
 
-Step 4. On the merged dataset, the column name for subject is corrected and the measurements data is merged with subjects and activity. The first 66 columns contain activity measurements that range from -1 to 1, the "subjects" column contains integers that range from 1 to 30 inclusive; the "activity" column contains 6 kinds of activity names.
+Step 4. On the merged dataset, the column name for subject is corrected and the measurements data is merged with subjects and activity. The first 79 columns contain activity measurements that range from -1 to 1, 80th column is the "subjects" column containing integers that range from 1 to 30, the 81st column is the "activity" column which contains 6 kinds of activity names.
 
-Step 5. Generation of a new dataset (mean.txt) with all the average measures for each measurement mean and std based on subject and activity type. There are 30 unique subjects and 6 unique activities, which result in a 180 combinations of the two. For each combination, we calculate the mean of each measurement with the corresponding combination and we get a 180x68 data frame.
+Step 5. Generation of a new dataset (mean_data) with all the average measures for each measurement mean and std based on subject and activity type. There are 30 unique subjects and 6 unique activities, which result in a 180 combinations of the two. For each combination we calculate the mean of each measurement and we get a 180x79 data frame. It is then exported as a txt file exported_data.
 
 
 Make sure the Run_analysis.R script and the data are in the current working directory.
 Use source("Run_analysis.R") to run the script in RStudio.
 
-The two output files are generated in the current working directory:
-final_data: containing the columns of means and std of the various measurements, with corresponding subjects and activities, dim(10299x68)
-mean_data: file with mean values of all the columns from the final_data file, the average of each variable for each activity and each subject, 6 activities in total and 30 subjects in total, gives 180 rows with all combinations for each of the 66 features: dim(180x68)
+The output files are generated in the current working directory:
+final_data: containing the columns of means and std of the various measurements, with corresponding subjects and activities
+mean_data: file with mean values of all the columns from the final_data file, the average of each variable for each activity and each subject, 6 activities in total and 30 subjects in total, gives 180 rows with all combinations for each of the 79 features: dim(180x79)
 The mean_data is exported as txt file - exported_data, you can inspect it by downloading it back to R
